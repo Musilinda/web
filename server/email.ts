@@ -60,7 +60,7 @@ export async function forwardWaitlistSignup(email: string): Promise<boolean> {
     // Add more detailed logging
     const result = await sendEmail({
       to: 'musilinda.app@gmail.com',
-      from: 'stephan@musilinda.com', // Using verified domain email
+      from: 'noreply@musilinda.com', // Using verified domain email
       subject: 'New Waitlist Signup',
       text: `A new user has signed up for the waitlist: ${email}`,
       html: `
