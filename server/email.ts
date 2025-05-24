@@ -37,16 +37,27 @@ export async function sendEmail(params: EmailParams): Promise<boolean> {
 }
 
 export async function forwardWaitlistSignup(email: string): Promise<boolean> {
-  return sendEmail({
-    to: 'musilinda.app@gmail.com',
-    from: 'musilinda.app@gmail.com', // Using Gmail as the sender since it's likely verified
-    subject: 'New Waitlist Signup',
-    text: `A new user has signed up for the waitlist: ${email}`,
-    html: `
-      <h2>New Waitlist Signup</h2>
-      <p>A new user has signed up for the Musilinda waitlist:</p>
-      <p><strong>${email}</strong></p>
-      <p>Date: ${new Date().toLocaleString()}</p>
-    `
-  });
+  try {
+    console.log('Attempting to send email to:', 'musilinda.app@gmail.com');
+    
+    // Add more detailed logging
+    const result = await sendEmail({
+      to: 'musilinda.app@gmail.com',
+      from: 'musilinda.app@gmail.com', // Make sure this email is verified in SendGrid
+      subject: 'New Waitlist Signup',
+      text: `A new user has signed up for the waitlist: ${email}`,
+      html: `
+        <h2>New Waitlist Signup</h2>
+        <p>A new user has signed up for the Musilinda waitlist:</p>
+        <p><strong>${email}</strong></p>
+        <p>Date: ${new Date().toLocaleString()}</p>
+      `
+    });
+    
+    console.log('Email send result:', result);
+    return result;
+  } catch (error) {
+    console.error('Error in forwardWaitlistSignup:', error);
+    return false;
+  }
 }
