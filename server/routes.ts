@@ -13,16 +13,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate the request body
       const validatedData = insertWaitlistSchema.parse(req.body);
       
-      // Store in database
-      await db.insert(waitlist).values(validatedData);
+      // Forward email to admin (skip database for now)
+      const emailSent = await forwardWaitlistSignup(validatedData.email);
       
-      // Forward email to admin
-      await forwardWaitlistSignup(validatedData.email);
-      
-      res.status(200).json({ 
-        success: true, 
-        message: "Thank you for joining our waitlist!" 
-      });
+      if (emailSent) {
+        res.status(200).json({ 
+          success: true, 
+          message: "Thank you for joining our waitlist!" 
+        });
+      } else {
+        throw new Error("Failed to send email");
+      }
     } catch (error: any) {
       console.error("Waitlist error:", error);
       
