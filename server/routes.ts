@@ -27,13 +27,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Store email in memory
       waitlistEmails.add(validatedData.email);
       console.log("Email collected:", validatedData.email);
-      
-      // Store the email in memory first
-      waitlistEmails.add(validatedData.email);
-      console.log("Email collected:", validatedData.email);
       console.log("Current waitlist emails:", Array.from(waitlistEmails));
       
-      // Always return success since we stored the email
+      // Return success since we stored the email
       res.status(200).json({ 
         success: true, 
         message: "Thank you for joining our waitlist!" 
