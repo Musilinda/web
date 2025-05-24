@@ -6,24 +6,41 @@ import { db } from "./db";
 import { waitlist, insertWaitlistSchema } from "@shared/schema";
 import { forwardWaitlistSignup } from "./email";
 
+// Temporary in-memory storage for collected emails
+const waitlistEmails = new Set<string>();
+
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Admin endpoint to view collected emails
+  app.get("/api/admin/waitlist", (req: Request, res: Response) => {
+    res.status(200).json({
+      count: waitlistEmails.size,
+      emails: Array.from(waitlistEmails)
+    });
+  });
+  
   // API endpoint for waitlist signups
   app.post("/api/waitlist", async (req: Request, res: Response) => {
     try {
       // Validate the request body
       const validatedData = insertWaitlistSchema.parse(req.body);
       
-      // Forward email to admin (skip database for now)
-      const emailSent = await forwardWaitlistSignup(validatedData.email);
+      // Store email in memory
+      waitlistEmails.add(validatedData.email);
+      console.log("Email collected:", validatedData.email);
       
-      if (emailSent) {
-        res.status(200).json({ 
-          success: true, 
-          message: "Thank you for joining our waitlist!" 
-        });
-      } else {
-        throw new Error("Failed to send email");
+      // Try to forward the email but continue even if it fails
+      try {
+        const emailSent = await forwardWaitlistSignup(validatedData.email);
+        console.log("Email forwarding result:", emailSent ? "success" : "failed");
+      } catch (emailError) {
+        console.error("Error forwarding email:", emailError);
       }
+      
+      // Always return success to the user
+      res.status(200).json({ 
+        success: true, 
+        message: "Thank you for joining our waitlist!" 
+      });
     } catch (error: any) {
       console.error("Waitlist error:", error);
       
