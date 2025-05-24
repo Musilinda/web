@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { z } from "zod";
 import { db } from "./db";
 import { waitlist, insertWaitlistSchema } from "@shared/schema";
+import { forwardWaitlistSignup } from "./email";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoint for waitlist signups
@@ -14,6 +15,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Store in database
       await db.insert(waitlist).values(validatedData);
+      
+      // Forward email to admin
+      await forwardWaitlistSignup(validatedData.email);
       
       res.status(200).json({ 
         success: true, 
