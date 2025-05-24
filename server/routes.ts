@@ -28,19 +28,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       waitlistEmails.add(validatedData.email);
       console.log("Email collected:", validatedData.email);
       
-      // Try to forward the email but continue even if it fails
-      try {
-        const emailSent = await forwardWaitlistSignup(validatedData.email);
-        console.log("Email forwarding result:", emailSent ? "success" : "failed");
-      } catch (emailError) {
-        console.error("Error forwarding email:", emailError);
-      }
+      // Forward the email and provide honest feedback
+      const emailSent = await forwardWaitlistSignup(validatedData.email);
+      console.log("Email forwarding result:", emailSent ? "success" : "failed");
       
-      // Always return success to the user
-      res.status(200).json({ 
-        success: true, 
-        message: "Thank you for joining our waitlist!" 
-      });
+      if (emailSent) {
+        res.status(200).json({ 
+          success: true, 
+          message: "Thank you for joining our waitlist!" 
+        });
+      } else {
+        throw new Error("Failed to send email");
+      }
     } catch (error: any) {
       console.error("Waitlist error:", error);
       
