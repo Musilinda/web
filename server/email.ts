@@ -39,7 +39,7 @@ export async function sendEmail(params: EmailParams): Promise<boolean> {
 export async function forwardWaitlistSignup(email: string): Promise<boolean> {
   return sendEmail({
     to: 'musilinda.app@gmail.com',
-    from: 'noreply@musilinda.com', // Make sure this domain is verified in your SendGrid account
+    from: 'musilinda.app@gmail.com', // Using Gmail as the sender since it's likely verified
     subject: 'New Waitlist Signup',
     text: `A new user has signed up for the waitlist: ${email}`,
     html: `
