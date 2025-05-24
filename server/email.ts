@@ -28,10 +28,23 @@ export async function sendEmail(params: EmailParams): Promise<boolean> {
       Object.assign(emailContent, { html: params.html });
     }
     
+    console.log('About to send email with content:', {
+      to: emailContent.to,
+      from: emailContent.from,
+      subject: emailContent.subject
+    });
+    
     await mailService.send(emailContent);
+    console.log('Email sent successfully');
     return true;
   } catch (error) {
     console.error('SendGrid email error:', error);
+    
+    // Check if it's a domain authentication error
+    if (error?.response?.body?.errors) {
+      console.error('SendGrid error details:', JSON.stringify(error.response.body.errors, null, 2));
+    }
+    
     return false;
   }
 }
