@@ -6,8 +6,6 @@ import { db } from "./db";
 import { waitlist, insertWaitlistSchema } from "@shared/schema";
 import { forwardWaitlistSignup } from "./email";
 
-// Using the central storage implementation
-
 // Response types for consistent API responses
 interface ApiSuccess {
   success: true;
@@ -64,8 +62,8 @@ function registerWaitlistRoutes(app: Express): void {
       // Validate the request body
       const validatedData = insertWaitlistSchema.parse(req.body);
       
-      // Store email in memory
-      waitlistEmails.add(validatedData.email);
+      // Store email using storage service
+      await storage.addToWaitlist(validatedData.email);
       console.log("Email collected:", validatedData.email);
       
       // Attempt to forward the email to admin
