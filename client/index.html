@@ -67,13 +67,17 @@
     <!-- Hero Section -->
     <section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-600 to-purple-600 text-white text-center px-6">
       <div class="flex flex-col items-center">
-        <div style="width: 180px; height: 180px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; position: relative;">
-          <div style="position: absolute; width: 180px; height: 180px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.3); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);"></div>
-          <div style="width: 172px; height: 172px; border-radius: 50%; overflow: hidden; position: relative; z-index: 1;">
+        <!-- Increased size by 10% from 180px to 198px -->
+        <div style="width: 198px; height: 198px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; position: relative;">
+          <div style="position: absolute; width: 198px; height: 198px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.3); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);"></div>
+          <div style="width: 190px; height: 190px; border-radius: 50%; overflow: hidden; position: relative; z-index: 1;">
             <img src="conductor.jpg" alt="Musilinda Mascot" style="width: 220%; height: 220%; object-position: center 5%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -30%);">
           </div>
         </div>
-        <h1 class="text-5xl font-bold mb-4">Musilinda</h1>
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <h1 class="text-5xl font-bold mb-4">Musilinda</h1>
+          <span style="font-size: 2.5rem; margin-left: 0.5rem; margin-bottom: 1rem;">♫</span>
+        </div>
         <p class="text-xl max-w-xl mb-6">A music theory app that teaches by doing — sing, see, feel, and truly understand harmony.</p>
         <button class="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-indigo-100 transition join-waitlist">Join the Early Access</button>
       </div>

@@ -9,7 +9,7 @@ export default function HeroSection() {
           <img 
             src="/conductor.jpg" 
             alt="Musilinda Mascot" 
-            className="w-full h-full object-cover rounded-full"
+            className="w-full h-full object-cover rounded-full object-top"
           />
         </div>
         <div className="flex items-center justify-center">
