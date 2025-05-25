@@ -3,11 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Musilinda - A music theory app that teaches by doing. Learn to sing, see, and feel music harmony through interactive lessons." />
+    
+    <!-- Open Graph tags for better social media sharing -->
+    <meta property="og:title" content="Musilinda – Theory You Can Feel" />
+    <meta property="og:description" content="Learn music theory through singing, visualization, and interactive lessons. Join the waitlist for early access." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://musilinda.com" />
+    
     <title>Musilinda – Theory You Can Feel</title>
+    
+    <!-- External scripts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+    
+    <!-- Modal and UI styles -->
     <style>
+      /* Modal container */
       .modal {
         display: none;
         position: fixed;
@@ -18,11 +30,15 @@
         height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
       }
+      
+      /* Active modal state */
       .modal-open {
         display: flex;
         align-items: center;
         justify-content: center;
       }
+      
+      /* Modal dialog box */
       .modal-content {
         background: white;
         padding: 2rem;
@@ -32,6 +48,8 @@
         position: relative;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
       }
+      
+      /* Close button */
       .close-modal {
         position: absolute;
         right: 1.5rem;
@@ -39,6 +57,8 @@
         font-size: 1.5rem;
         cursor: pointer;
       }
+      
+      /* Form input field */
       .form-input {
         width: 100%;
         padding: 0.75rem;
@@ -46,16 +66,21 @@
         border-radius: 0.5rem;
         margin-bottom: 1rem;
       }
+      
+      /* Status message container */
       .status-message {
         padding: 0.75rem;
         border-radius: 0.5rem;
         margin-bottom: 1rem;
         display: none;
       }
+      
+      /* Success and error states */
       .success {
         background-color: #c6f6d5;
         color: #2f855a;
       }
+      
       .error {
         background-color: #fed7d7;
         color: #c53030;
@@ -67,19 +92,37 @@
     <!-- Hero Section -->
     <section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-600 to-purple-600 text-white text-center px-6">
       <div class="flex flex-col items-center">
-        <!-- Increased size by 50% from 180px to 270px -->
-        <div style="width: 270px; height: 270px; margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: center; position: relative;">
-          <div style="position: absolute; width: 270px; height: 270px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.3); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);"></div>
-          <div style="width: 260px; height: 260px; border-radius: 50%; overflow: hidden; position: relative; z-index: 1;">
-            <img src="conductor.jpg" alt="Musilinda Mascot" style="width: 175%; height: 175%; object-position: center 20%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -30%);">
+        <!-- Conductor mascot in circular frame -->
+        <div class="conductor-container" style="width: 270px; height: 270px; margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: center; position: relative;">
+          <!-- Outer glow circle -->
+          <div class="conductor-glow" style="position: absolute; width: 270px; height: 270px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.3); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);"></div>
+          
+          <!-- Image container -->
+          <div class="conductor-image-container" style="width: 260px; height: 260px; border-radius: 50%; overflow: hidden; position: relative; z-index: 1;">
+            <img 
+              src="conductor.jpg" 
+              alt="Musilinda Conductor Mascot" 
+              class="conductor-image"
+              style="width: 175%; height: 175%; object-position: center 20%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -30%);"
+            >
           </div>
         </div>
-        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-          <h1 style="font-size: 3.5rem; font-weight: bold; margin-bottom: 1rem;">Musilinda</h1>
-          <span style="font-size: 3.5rem; margin-left: 0.5rem; margin-bottom: 1rem; color: #000000;">♫</span>
+        
+        <!-- Title with music notes -->
+        <div class="title-container" style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <h1 class="main-title" style="font-size: 3.5rem; font-weight: bold; margin-bottom: 1rem;">Musilinda</h1>
+          <span class="music-notes" aria-hidden="true" style="font-size: 3.5rem; margin-left: 0.5rem; margin-bottom: 1rem; color: #000000;">♫</span>
         </div>
-        <p style="font-size: 1.5rem; max-width: 40rem; margin-bottom: 2rem; line-height: 2rem;">A music theory app that teaches by doing — sing, see, feel, and truly understand harmony.</p>
-        <button class="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-indigo-100 transition join-waitlist">Join the Early Access</button>
+        
+        <!-- Tagline description -->
+        <p class="tagline" style="font-size: 1.5rem; max-width: 40rem; margin-bottom: 2rem; line-height: 2rem;">
+          A music theory app that teaches by doing — sing, see, feel, and truly understand harmony.
+        </p>
+        
+        <!-- CTA Button -->
+        <button class="cta-button bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-indigo-100 transition join-waitlist">
+          Join the Early Access
+        </button>
       </div>
     </section>
 
