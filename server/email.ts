@@ -42,8 +42,10 @@ export async function sendEmail(params: EmailParams): Promise<boolean> {
     
     // Check if it's a domain authentication error
     try {
-      if (error && 'response' in error && error.response && 'body' in error.response && error.response.body && 'errors' in error.response.body) {
-        console.error('SendGrid error details:', JSON.stringify(error.response.body.errors, null, 2));
+      // Check for error details in a safer way
+      const errorObj = error as any;
+      if (errorObj && errorObj.response && errorObj.response.body && errorObj.response.body.errors) {
+        console.error('SendGrid error details:', JSON.stringify(errorObj.response.body.errors, null, 2));
       }
     } catch (logError) {
       console.error('Error parsing SendGrid error:', logError);

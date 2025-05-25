@@ -29,11 +29,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log("Email collected:", validatedData.email);
       console.log("Current waitlist emails:", Array.from(waitlistEmails));
       
-      // Return success since we stored the email
-      res.status(200).json({ 
-        success: true, 
-        message: "Thank you for joining our waitlist!" 
-      });
+      // Attempt to forward the email to admin
+      const emailSent = await forwardWaitlistSignup(validatedData.email);
+      
+      if (emailSent) {
+        // Success - email was stored and notification was sent
+        res.status(200).json({ 
+          success: true, 
+          message: "Thank you for joining our waitlist!" 
+        });
+      } else {
+        // Error - email was stored but notification failed
+        res.status(500).json({ 
+          success: false, 
+          message: "SendGrid error: Unable to process your request. The email server is not properly configured." 
+        });
+      }
     } catch (error: any) {
       console.error("Waitlist error:", error);
       
