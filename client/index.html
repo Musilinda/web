@@ -17,9 +17,87 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
     
-    <!-- Modal and UI styles -->
+    <!-- Application styles -->
     <style>
-      /* Modal container */
+      /* ===== Global styles ===== */
+      :root {
+        --primary-color: #4f46e5;
+        --primary-dark: #4338ca;
+        --primary-light: #6366f1;
+        --success-bg: #c6f6d5;
+        --success-text: #2f855a;
+        --error-bg: #fed7d7;
+        --error-text: #c53030;
+      }
+      
+      /* ===== Hero section styles ===== */
+      .conductor-container {
+        width: 270px;
+        height: 270px;
+        margin-bottom: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      
+      .conductor-glow {
+        position: absolute;
+        width: 270px;
+        height: 270px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+      
+      .conductor-image-container {
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .conductor-image {
+        width: 175%;
+        height: 175%;
+        object-position: center 20%;
+        object-fit: cover;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -30%);
+      }
+      
+      .title-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+      
+      .main-title {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+      
+      .music-notes {
+        font-size: 3.5rem;
+        margin-left: 0.5rem;
+        margin-bottom: 1rem;
+        color: #000000;
+      }
+      
+      .tagline {
+        font-size: 1.5rem;
+        max-width: 40rem;
+        margin-bottom: 2rem;
+        line-height: 2rem;
+      }
+      
+      /* ===== Modal styles ===== */
       .modal {
         display: none;
         position: fixed;
@@ -31,14 +109,12 @@
         background-color: rgba(0, 0, 0, 0.5);
       }
       
-      /* Active modal state */
       .modal-open {
         display: flex;
         align-items: center;
         justify-content: center;
       }
       
-      /* Modal dialog box */
       .modal-content {
         background: white;
         padding: 2rem;
@@ -49,7 +125,6 @@
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
       }
       
-      /* Close button */
       .close-modal {
         position: absolute;
         right: 1.5rem;
@@ -58,7 +133,7 @@
         cursor: pointer;
       }
       
-      /* Form input field */
+      /* ===== Form styles ===== */
       .form-input {
         width: 100%;
         padding: 0.75rem;
@@ -67,7 +142,6 @@
         margin-bottom: 1rem;
       }
       
-      /* Status message container */
       .status-message {
         padding: 0.75rem;
         border-radius: 0.5rem;
@@ -75,15 +149,44 @@
         display: none;
       }
       
-      /* Success and error states */
       .success {
-        background-color: #c6f6d5;
-        color: #2f855a;
+        background-color: var(--success-bg);
+        color: var(--success-text);
       }
       
       .error {
-        background-color: #fed7d7;
-        color: #c53030;
+        background-color: var(--error-bg);
+        color: var(--error-text);
+      }
+      
+      /* ===== Responsive adjustments ===== */
+      @media (max-width: 640px) {
+        .main-title {
+          font-size: 2.5rem;
+        }
+        
+        .music-notes {
+          font-size: 2.5rem;
+        }
+        
+        .tagline {
+          font-size: 1.25rem;
+        }
+        
+        .conductor-container {
+          width: 220px;
+          height: 220px;
+        }
+        
+        .conductor-glow {
+          width: 220px;
+          height: 220px;
+        }
+        
+        .conductor-image-container {
+          width: 210px;
+          height: 210px;
+        }
       }
     </style>
   </head>
@@ -93,29 +196,28 @@
     <section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-600 to-purple-600 text-white text-center px-6">
       <div class="flex flex-col items-center">
         <!-- Conductor mascot in circular frame -->
-        <div class="conductor-container" style="width: 270px; height: 270px; margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: center; position: relative;">
+        <div class="conductor-container">
           <!-- Outer glow circle -->
-          <div class="conductor-glow" style="position: absolute; width: 270px; height: 270px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.3); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);"></div>
+          <div class="conductor-glow"></div>
           
           <!-- Image container -->
-          <div class="conductor-image-container" style="width: 260px; height: 260px; border-radius: 50%; overflow: hidden; position: relative; z-index: 1;">
+          <div class="conductor-image-container">
             <img 
               src="conductor.jpg" 
               alt="Musilinda Conductor Mascot" 
               class="conductor-image"
-              style="width: 175%; height: 175%; object-position: center 20%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -30%);"
             >
           </div>
         </div>
         
         <!-- Title with music notes -->
-        <div class="title-container" style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-          <h1 class="main-title" style="font-size: 3.5rem; font-weight: bold; margin-bottom: 1rem;">Musilinda</h1>
-          <span class="music-notes" aria-hidden="true" style="font-size: 3.5rem; margin-left: 0.5rem; margin-bottom: 1rem; color: #000000;">♫</span>
+        <div class="title-container">
+          <h1 class="main-title">Musilinda</h1>
+          <span class="music-notes" aria-hidden="true">♫</span>
         </div>
         
         <!-- Tagline description -->
-        <p class="tagline" style="font-size: 1.5rem; max-width: 40rem; margin-bottom: 2rem; line-height: 2rem;">
+        <p class="tagline">
           A music theory app that teaches by doing — sing, see, feel, and truly understand harmony.
         </p>
         
@@ -224,81 +326,121 @@
       </div>
     </div>
 
+    <!-- Main application script -->
     <script>
+      /**
+       * Musilinda Waitlist Form Handler
+       * 
+       * Manages the waitlist signup modal and form submission process
+       */
       document.addEventListener('DOMContentLoaded', function() {
-        // Get all elements
-        const modal = document.getElementById('email-modal');
-        const waitlistButtons = document.querySelectorAll('.join-waitlist');
-        const closeModal = document.querySelector('.close-modal');
-        const waitlistForm = document.getElementById('waitlist-form');
-        const statusMessage = document.getElementById('status-message');
+        // DOM element references
+        const elements = {
+          modal: document.getElementById('email-modal'),
+          waitlistButtons: document.querySelectorAll('.join-waitlist'),
+          closeModalButton: document.querySelector('.close-modal'),
+          waitlistForm: document.getElementById('waitlist-form'),
+          statusMessage: document.getElementById('status-message'),
+          emailInput: document.getElementById('email')
+        };
         
-        // Open modal when clicking any waitlist button
-        waitlistButtons.forEach(button => {
-          button.addEventListener('click', function() {
-            modal.classList.add('modal-open');
-          });
+        /**
+         * Opens the waitlist signup modal
+         */
+        function openModal() {
+          elements.modal.classList.add('modal-open');
+        }
+        
+        /**
+         * Closes the waitlist signup modal
+         */
+        function closeModal() {
+          elements.modal.classList.remove('modal-open');
+        }
+        
+        /**
+         * Displays a status message to the user
+         * @param {string} message - The message to display
+         * @param {string} type - Either 'success' or 'error'
+         */
+        function showStatusMessage(message, type) {
+          elements.statusMessage.textContent = message;
+          elements.statusMessage.classList.remove('success', 'error');
+          elements.statusMessage.classList.add(type);
+          elements.statusMessage.style.display = 'block';
+        }
+        
+        /**
+         * Clears any displayed status message
+         */
+        function clearStatusMessage() {
+          elements.statusMessage.textContent = '';
+          elements.statusMessage.classList.remove('success', 'error');
+          elements.statusMessage.style.display = 'none';
+        }
+        
+        /**
+         * Submits the email to the waitlist API
+         * @param {string} email - The email address to submit
+         * @returns {Promise} - Promise that resolves with the API response
+         */
+        async function submitToWaitlist(email) {
+          try {
+            const response = await fetch('/api/waitlist', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ email }),
+            });
+            
+            return await response.json();
+          } catch (error) {
+            console.error('Waitlist submission error:', error);
+            throw error;
+          }
+        }
+        
+        // Event: Open modal when clicking any waitlist button
+        elements.waitlistButtons.forEach(button => {
+          button.addEventListener('click', openModal);
         });
         
-        // Close modal when clicking the X
-        closeModal.addEventListener('click', function() {
-          modal.classList.remove('modal-open');
-        });
+        // Event: Close modal when clicking the X button
+        elements.closeModalButton.addEventListener('click', closeModal);
         
-        // Close modal when clicking outside
+        // Event: Close modal when clicking outside the modal content
         window.addEventListener('click', function(event) {
-          if (event.target === modal) {
-            modal.classList.remove('modal-open');
+          if (event.target === elements.modal) {
+            closeModal();
           }
         });
         
-        // Handle form submission
-        waitlistForm.addEventListener('submit', function(e) {
+        // Event: Handle form submission
+        elements.waitlistForm.addEventListener('submit', async function(e) {
           e.preventDefault();
           
-          const email = document.getElementById('email').value;
+          const email = elements.emailInput.value;
+          clearStatusMessage();
           
-          // Clear any previous status message
-          statusMessage.textContent = '';
-          statusMessage.classList.remove('success', 'error');
-          statusMessage.style.display = 'none';
-          
-          // Submit the email to the API
-          fetch('/api/waitlist', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
-          })
-          .then(response => response.json())
-          .then(data => {
+          try {
+            const data = await submitToWaitlist(email);
+            
             if (data.success) {
-              // Show success message
-              statusMessage.textContent = data.message;
-              statusMessage.classList.add('success');
-              statusMessage.style.display = 'block';
+              // Success case
+              showStatusMessage(data.message, 'success');
+              elements.waitlistForm.reset();
               
-              // Clear the form
-              waitlistForm.reset();
-              
-              // Close the modal after 2 seconds
-              setTimeout(() => {
-                modal.classList.remove('modal-open');
-              }, 2000);
+              // Auto-close the modal after success
+              setTimeout(closeModal, 2000);
             } else {
-              // Show error message
-              statusMessage.textContent = data.message;
-              statusMessage.classList.add('error');
-              statusMessage.style.display = 'block';
+              // Error returned from API
+              showStatusMessage(data.message, 'error');
             }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            statusMessage.textContent = 'An error occurred. Please try again.';
-            statusMessage.classList.add('error');
-            statusMessage.style.display = 'block';
-          });
+          } catch (error) {
+            // Network or unexpected error
+            showStatusMessage('An error occurred. Please try again.', 'error');
+          }
         });
       });
     </script>
