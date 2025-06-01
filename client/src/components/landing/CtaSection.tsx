@@ -145,6 +145,15 @@ export default function CtaSection() {
             </form>
           </div>
           
+          <div className="mb-8">
+            <a 
+              href="https://learn.musilinda.com" 
+              className="inline-block px-8 py-4 bg-white text-primary font-medium text-lg rounded-lg hover:shadow-lg transition-shadow duration-300"
+            >
+              Learn
+            </a>
+          </div>
+          
           <div className="flex justify-center space-x-6">
             <a href="#" className="text-white hover:text-white/80 transition-colors duration-200">
               <i className="fab fa-instagram text-2xl"></i>
