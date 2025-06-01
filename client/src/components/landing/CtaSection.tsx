@@ -77,7 +77,7 @@ export default function CtaSection() {
           
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 md:p-10 mb-8">
             <h3 className="font-poppins font-semibold text-2xl text-white mb-6">Get Early Access</h3>
-            <form id="contact" className="space-y-4" onSubmit={handleSubmit}>
+            <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="block text-white mb-2">First Name</label>
@@ -140,8 +140,8 @@ export default function CtaSection() {
                   Learn
                 </a>
               </div>
-              <p className="text-white/60 text-sm text-center">By signing up, you agree to our Terms and Privacy Policy.</p>
-            </form>
+              <p className="text-white/60 text-sm text-center">Ready to start learning music theory?</p>
+            </div>
           </div>
           
           <div className="flex justify-center space-x-6">
