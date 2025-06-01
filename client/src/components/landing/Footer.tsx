@@ -35,10 +35,10 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-lg mb-4">Resources</h4>
             <ul className="space-y-2">
+              <li><a href="https://learn.musilinda.com" className="text-gray-400 hover:text-white transition-colors duration-200">Learn</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Help Center</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Community</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Tutorials</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">API Documentation</a></li>
             </ul>
           </div>
           
