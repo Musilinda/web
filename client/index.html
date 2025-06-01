@@ -438,14 +438,10 @@
             } else {
               // Error returned from API
               showStatusMessage(data.message, 'error');
-              // Show form again on error
-              elements.waitlistForm.style.display = 'block';
             }
           } catch (error) {
             // Network or unexpected error
             showStatusMessage('An error occurred. Please try again.', 'error');
-            // Show form again on error
-            elements.waitlistForm.style.display = 'block';
           }
         });
       });
