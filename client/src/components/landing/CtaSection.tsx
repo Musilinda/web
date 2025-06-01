@@ -76,71 +76,15 @@ export default function CtaSection() {
           <p className="text-white/80 text-lg mb-8">Join thousands of musicians and music enthusiasts who have already discovered the future of music with Musilina.</p>
           
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 md:p-10 mb-8">
-            <h3 className="font-poppins font-semibold text-2xl text-white mb-6">Get Early Access</h3>
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-white mb-2">First Name</label>
-                  <input 
-                    type="text" 
-                    id="firstName" 
-                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white" 
-                    placeholder="Your first name" 
-                    required
-                    value={formData.firstName}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-white mb-2">Last Name</label>
-                  <input 
-                    type="text" 
-                    id="lastName" 
-                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white" 
-                    placeholder="Your last name" 
-                    required
-                    value={formData.lastName}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-white mb-2">Email Address</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white" 
-                  placeholder="your@email.com" 
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label htmlFor="interest" className="block text-white mb-2">I'm interested in...</label>
-                <select 
-                  id="interest" 
-                  className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-white" 
-                  required
-                  value={formData.interest}
-                  onChange={handleChange}
-                >
-                  <option value="" disabled className="text-gray-800">Select your interest</option>
-                  <option value="creating" className="text-gray-800">Creating music</option>
-                  <option value="discovering" className="text-gray-800">Discovering new music</option>
-                  <option value="collaborating" className="text-gray-800">Collaborating with artists</option>
-                  <option value="other" className="text-gray-800">Other</option>
-                </select>
-              </div>
-              <div className="pt-2">
-                <a 
-                  href="https://learn.musilinda.com" 
-                  className="inline-block w-full px-6 py-3 bg-white text-primary font-medium rounded-lg hover:shadow-lg transition-shadow duration-300 text-center"
-                >
-                  Learn
-                </a>
-              </div>
-              <p className="text-white/60 text-sm text-center">Ready to start learning music theory?</p>
+            <h3 className="font-poppins font-semibold text-2xl text-white mb-6">Start Learning Today</h3>
+            <p className="text-white/80 text-lg mb-8">Experience music theory like never before with our interactive learning platform.</p>
+            <div className="pt-2">
+              <a 
+                href="https://learn.musilinda.com" 
+                className="inline-block px-8 py-4 bg-white text-primary font-medium text-lg rounded-lg hover:shadow-lg transition-shadow duration-300"
+              >
+                Learn
+              </a>
             </div>
           </div>
           
