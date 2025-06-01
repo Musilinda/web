@@ -133,25 +133,15 @@ export default function CtaSection() {
                 </select>
               </div>
               <div className="pt-2">
-                <button 
-                  type="submit" 
-                  className="w-full px-6 py-3 bg-white text-primary font-medium rounded-lg hover:shadow-lg transition-shadow duration-300"
-                  disabled={isSubmitting}
+                <a 
+                  href="https://learn.musilinda.com" 
+                  className="inline-block w-full px-6 py-3 bg-white text-primary font-medium rounded-lg hover:shadow-lg transition-shadow duration-300 text-center"
                 >
-                  {isSubmitting ? "Submitting..." : "Join the Waitlist"}
-                </button>
+                  Learn
+                </a>
               </div>
               <p className="text-white/60 text-sm text-center">By signing up, you agree to our Terms and Privacy Policy.</p>
             </form>
-          </div>
-          
-          <div className="mb-8">
-            <a 
-              href="https://learn.musilinda.com" 
-              className="inline-block px-8 py-4 bg-white text-primary font-medium text-lg rounded-lg hover:shadow-lg transition-shadow duration-300"
-            >
-              Learn
-            </a>
           </div>
           
           <div className="flex justify-center space-x-6">
