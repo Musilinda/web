@@ -1,4 +1,4 @@
-import Header from "@/components/landing/Header";
+simport Header from "@/components/landing/Header";
 import HeroSection from "@/components/landing/HeroSection";
 import LogoCloud from "@/components/landing/LogoCloud";
 import FeaturesSection from "@/components/landing/FeaturesSection";
