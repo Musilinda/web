@@ -423,23 +423,29 @@
           const email = elements.emailInput.value;
           clearStatusMessage();
           
+          // Hide form fields immediately when button is clicked
+          elements.waitlistForm.style.display = 'none';
+          
           try {
             const data = await submitToWaitlist(email);
             
             if (data.success) {
               // Success case
               showStatusMessage(data.message, 'success');
-              elements.waitlistForm.reset();
               
               // Auto-close the modal after success
               setTimeout(closeModal, 400);
             } else {
               // Error returned from API
               showStatusMessage(data.message, 'error');
+              // Show form again on error
+              elements.waitlistForm.style.display = 'block';
             }
           } catch (error) {
             // Network or unexpected error
             showStatusMessage('An error occurred. Please try again.', 'error');
+            // Show form again on error
+            elements.waitlistForm.style.display = 'block';
           }
         });
       });
