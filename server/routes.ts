@@ -64,22 +64,12 @@ function registerWaitlistRoutes(app: Express): void {
       
       // Store email using storage service
       await storage.addToWaitlist(validatedData.email);
-      console.log("Email collected:", validatedData.email);
+      console.log("Email added to waitlist:", validatedData.email);
       
-      // Attempt to forward the email to admin
-      const emailSent = await forwardWaitlistSignup(validatedData.email);
-      
-      if (emailSent) {
-        // Success - email was stored and notification was sent
-        sendSuccessResponse(res, {
-          message: "Thank you for joining our waitlist!"
-        });
-      } else {
-        // Error - email was stored but notification failed
-        sendErrorResponse(res, 500, {
-          message: "SendGrid error: Unable to process your request. The email server is not properly configured."
-        });
-      }
+      // Success - email was stored in database
+      sendSuccessResponse(res, {
+        message: "Thank you for joining our waitlist!"
+      });
     } catch (error: any) {
       handleWaitlistError(res, error);
     }
