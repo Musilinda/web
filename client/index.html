@@ -304,7 +304,7 @@
                 <span class="text-gray-500 text-xs leading-tight">App Store (Soon)</span>
                 <span class="text-gray-500 text-xs leading-tight">Google Play (Soon)</span>
               </div>
-              <a href="/privacy-policy" class="text-gray-400 hover:text-white text-xs transition-colors leading-tight mt-1">
+              <a href="#" onclick="navigateToPrivacyPolicy(event)" class="text-gray-400 hover:text-white text-xs transition-colors leading-tight mt-1">
                 Privacy Policy
               </a>
             </div>
@@ -448,6 +448,16 @@
           }
         });
       });
+      
+      /**
+       * Navigate to privacy policy page
+       */
+      function navigateToPrivacyPolicy(event) {
+        event.preventDefault();
+        window.history.pushState({}, '', '/privacy-policy');
+        // Trigger a popstate event to make the router handle the navigation
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      }
     </script>
   </body>
 </html>
