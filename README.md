@@ -5,18 +5,18 @@ This is the static landing page for Musilinda, a music theory app that teaches b
 ## Getting Started
 
 1. **Install dependencies:**
-	```bash
-	npm install
-	```
+   ```bash
+   npm install
+   ```
 2. **Start the development server:**
-	```bash
-	npm run dev
-	```
+   ```bash
+   npm run dev
+   ```
 3. **Build for production:**
-	```bash
-	npm run build
-	```
-	The static site will be output to the `dist` folder.
+   ```bash
+   npm run build
+   ```
+   The static site will be output to the `dist` folder.
 
 ## Deployment
 

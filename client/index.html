@@ -1,22 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Musilinda - A music theory app that teaches by doing. Learn to sing, see, and feel music harmony through interactive lessons." />
-    
+    <meta
+      name="description"
+      content="Musilinda - A music theory app that teaches by doing. Learn to sing, see, and feel music harmony through interactive lessons."
+    />
+
     <!-- Open Graph tags for better social media sharing -->
     <meta property="og:title" content="Musilinda – Theory You Can Feel" />
-    <meta property="og:description" content="Learn music theory through singing, visualization, and interactive lessons. Join the waitlist for early access." />
+    <meta
+      property="og:description"
+      content="Learn music theory through singing, visualization, and interactive lessons. Join the waitlist for early access."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://musilinda.com" />
-    
+
     <title>Musilinda – Theory You Can Feel</title>
-    
+
     <!-- External scripts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
-    
+    <script
+      type="text/javascript"
+      src="https://replit.com/public/js/replit-dev-banner.js"
+    ></script>
+
     <!-- Application styles -->
     <style>
       /* ===== Global styles ===== */
@@ -29,7 +38,7 @@
         --error-bg: #fed7d7;
         --error-text: #c53030;
       }
-      
+
       /* ===== Hero section styles ===== */
       .conductor-container {
         width: 270px;
@@ -40,7 +49,7 @@
         justify-content: center;
         position: relative;
       }
-      
+
       .conductor-glow {
         position: absolute;
         width: 270px;
@@ -49,7 +58,7 @@
         background-color: rgba(255, 255, 255, 0.3);
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       }
-      
+
       .conductor-image-container {
         width: 260px;
         height: 260px;
@@ -58,7 +67,7 @@
         position: relative;
         z-index: 1;
       }
-      
+
       .conductor-image {
         width: 175%;
         height: 175%;
@@ -69,14 +78,14 @@
         left: 50%;
         transform: translate(-50%, -30%);
       }
-      
+
       .title-container {
         display: flex;
         align-items: center;
         gap: 0.5rem;
         margin-bottom: 1.5rem;
       }
-      
+
       .main-title {
         font-size: 3.5rem;
         font-weight: 800;
@@ -86,14 +95,14 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      
+
       .music-notes {
         font-size: 3rem;
         margin-left: 0.5rem;
         color: #fbbf24;
         text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
       }
-      
+
       .tagline {
         font-size: 1.375rem;
         line-height: 1.6;
@@ -101,7 +110,7 @@
         max-width: 42rem;
         color: rgba(255, 255, 255, 0.9);
       }
-      
+
       .cta-button {
         display: inline-block;
         text-decoration: none;
@@ -109,12 +118,12 @@
         transition: all 0.3s ease;
         margin-right: 0.5rem;
       }
-      
+
       .cta-button:hover {
         transform: translateY(-2px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       }
-      
+
       /* ===== Modal styles ===== */
       .modal {
         display: none;
@@ -127,13 +136,13 @@
         background-color: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(4px);
       }
-      
+
       .modal-open {
         display: flex;
         align-items: center;
         justify-content: center;
       }
-      
+
       .modal-content {
         background: white;
         padding: 2rem;
@@ -143,7 +152,7 @@
         position: relative;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
       }
-      
+
       .close-modal {
         position: absolute;
         right: 1.5rem;
@@ -151,7 +160,7 @@
         font-size: 1.5rem;
         cursor: pointer;
       }
-      
+
       /* ===== Form styles ===== */
       .form-input {
         width: 100%;
@@ -160,48 +169,48 @@
         border-radius: 0.5rem;
         margin-bottom: 1rem;
       }
-      
+
       .status-message {
         padding: 0.75rem;
         border-radius: 0.5rem;
         margin-bottom: 1rem;
         display: none;
       }
-      
+
       .success {
         background-color: var(--success-bg);
         color: var(--success-text);
       }
-      
+
       .error {
         background-color: var(--error-bg);
         color: var(--error-text);
       }
-      
+
       /* ===== Responsive adjustments ===== */
       @media (max-width: 640px) {
         .main-title {
           font-size: 2.5rem;
         }
-        
+
         .music-notes {
           font-size: 2.5rem;
         }
-        
+
         .tagline {
           font-size: 1.25rem;
         }
-        
+
         .conductor-container {
           width: 220px;
           height: 220px;
         }
-        
+
         .conductor-glow {
           width: 220px;
           height: 220px;
         }
-        
+
         .conductor-image-container {
           width: 210px;
           height: 210px;
@@ -210,38 +219,43 @@
     </style>
   </head>
   <body class="bg-white text-gray-900 font-sans">
-
     <!-- Hero Section -->
-    <section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-600 to-purple-600 text-white text-center px-6">
+    <section
+      class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-600 to-purple-600 text-white text-center px-6"
+    >
       <div class="flex flex-col items-center">
         <!-- Conductor mascot in circular frame -->
         <div class="conductor-container">
           <!-- Outer glow circle -->
           <div class="conductor-glow"></div>
-          
+
           <!-- Image container -->
           <div class="conductor-image-container">
-            <img 
-              src="conductor.jpg" 
-              alt="Musilinda Conductor Mascot" 
+            <img
+              src="images/conductor.jpg"
+              alt="Musilinda Conductor Mascot"
               class="conductor-image"
-            >
+            />
           </div>
         </div>
-        
+
         <!-- Title with music notes -->
         <div class="title-container">
           <h1 class="main-title">Musilinda</h1>
           <span class="music-notes" aria-hidden="true">♫</span>
         </div>
-        
+
         <!-- Tagline description -->
         <p class="tagline">
-          A music theory app that teaches by doing — sing, see, feel, and truly understand harmony.
+          A music theory app that teaches by doing — sing, see, feel, and truly
+          understand harmony.
         </p>
-        
+
         <!-- CTA Button -->
-        <a href="https://learn.musilinda.com" class="cta-button bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-indigo-100 transition">
+        <a
+          href="https://learn.musilinda.com"
+          class="cta-button bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-indigo-100 transition"
+        >
           Learn
         </a>
       </div>
@@ -254,15 +268,24 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 class="text-xl font-semibold mb-2">🎤 Sing It</h3>
-            <p class="text-gray-700">Use your voice. Sing intervals and chords. Real-time pitch feedback trains your ears and instincts.</p>
+            <p class="text-gray-700">
+              Use your voice. Sing intervals and chords. Real-time pitch
+              feedback trains your ears and instincts.
+            </p>
           </div>
           <div>
             <h3 class="text-xl font-semibold mb-2">👀 See It</h3>
-            <p class="text-gray-700">Visualize notes, frequencies, solfège, and relationships all at once. Reinforce pattern recognition every time.</p>
+            <p class="text-gray-700">
+              Visualize notes, frequencies, solfège, and relationships all at
+              once. Reinforce pattern recognition every time.
+            </p>
           </div>
           <div>
             <h3 class="text-xl font-semibold mb-2">🎮 Feel It</h3>
-            <p class="text-gray-700">Gamified lessons make learning addictive. Earn streaks, beat challenges, and master harmony without rote learning.</p>
+            <p class="text-gray-700">
+              Gamified lessons make learning addictive. Earn streaks, beat
+              challenges, and master harmony without rote learning.
+            </p>
           </div>
         </div>
       </div>
@@ -271,61 +294,120 @@
     <!-- CTA Section -->
     <section class="py-20 bg-white text-center px-6" id="cta">
       <h2 class="text-3xl font-bold mb-4">Theory You Can Feel.</h2>
-      <a href="https://apps.apple.com/us/app/musilinda/id6749832456" target="_blank" rel="noopener" class="inline-block bg-indigo-600 text-white font-semibold px-8 py-4 rounded-full hover:bg-indigo-700 transition">Go to App Store</a>
+      <a
+        href="https://apps.apple.com/us/app/musilinda/id6749832456"
+        target="_blank"
+        rel="noopener"
+        class="inline-block bg-indigo-600 text-white font-semibold px-8 py-4 rounded-full hover:bg-indigo-700 transition"
+        >Go to App Store</a
+      >
     </section>
 
     <!-- Footer -->
     <footer class="py-0 bg-gray-900 text-gray-400 text-sm">
-      <div class="container mx-auto px-2 py-0">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-0 items-center">
-          <div class="text-center md:col-span-3 py-0">
-            <h3 class="text-white font-semibold mb-0 text-sm leading-tight">Connect With Us</h3>
-            <div class="flex justify-center space-x-3 py-0 my-0">
-              <a href="https://www.youtube.com/channel/UCqx2a5tqZpq8JvD2nU24IxQ" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors" aria-label="YouTube">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube">
-                  <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
-                  <path d="m10 15 5-3-5-3z"></path>
-                </svg>
-              </a>
-              <a href="https://x.com/MusilindaApp" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors" aria-label="Twitter/X">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter">
-                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                </svg>
-              </a>
-              <a href="https://www.tiktok.com/@musilinda.app" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors" aria-label="TikTok">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512" fill="currentColor">
-                  <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z" />
-                </svg>
-              </a>
-            </div>
-            <p class="mt-0 text-xs leading-tight">&copy; 2025 Musilinda. All rights reserved.</p>
+      <div class="container mx-auto px-2 py-0 pb-0">
+        <div class="flex flex-col items-center justify-center py-0 pb-0">
+          <div class="py-0 my-0">
+            <img
+              src="images/logo.png?v=2025"
+              alt="Musilinda Logo"
+              style="
+                width: 100%;
+                max-width: 800px;
+                height: auto;
+                mix-blend-mode: normal;
+                margin-bottom: 8px;
+              "
+            />
           </div>
-          
-          <div class="text-center md:col-span-6 py-0 pb-4">
-            <div class="py-0 my-0">
-              <img src="logo.png?v=2025" alt="Musilinda Logo" style="width: 100%; max-width: 800px; height: auto; mix-blend-mode: normal; margin-bottom: 8px;" />
-            </div>
-            <a href="/privacy-policy.html" target="_blank" class="text-gray-400 hover:text-white text-xs transition-colors leading-tight inline-block">
-              Privacy Policy
+          <h3 class="text-white font-semibold mb-0 text-sm leading-tight">
+            Connect With Us
+          </h3>
+          <div class="flex justify-center space-x-3 py-0 my-0">
+            <a
+              href="https://www.youtube.com/channel/UCqx2a5tqZpq8JvD2nU24IxQ"
+              target="_blank"
+              rel="noopener"
+              class="text-gray-400 hover:text-white transition-colors"
+              aria-label="YouTube"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-youtube"
+              >
+                <path
+                  d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"
+                ></path>
+                <path d="m10 15 5-3-5-3z"></path>
+              </svg>
+            </a>
+            <a
+              href="https://x.com/MusilindaApp"
+              target="_blank"
+              rel="noopener"
+              class="text-gray-400 hover:text-white transition-colors"
+              aria-label="Twitter/X"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-twitter"
+              >
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://www.tiktok.com/@musilinda.app"
+              target="_blank"
+              rel="noopener"
+              class="text-gray-400 hover:text-white transition-colors"
+              aria-label="TikTok"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 448 512"
+                fill="currentColor"
+              >
+                <path
+                  d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"
+                />
+              </svg>
             </a>
           </div>
-          
-          <div class="text-center md:text-right md:col-span-3 py-0">
-            <h3 class="text-white font-semibold mb-0 text-sm leading-tight">Try the App</h3>
-            <div class="flex flex-col items-center md:items-end gap-0">
-              <a href="https://app.musilinda.com" target="_blank" rel="noopener" class="text-white hover:text-primary-100 text-xs transition-colors leading-tight">
-                app.musilinda.com
-              </a>
-              <div class="flex flex-col items-center md:items-end">
-                <span class="text-gray-500 text-xs leading-tight">Google Play (Soon)</span>
-                <a href="https://apps.apple.com/us/app/musilinda/id6749832456" target="_blank" rel="noopener" class="text-gray-400 hover:text-white text-xs transition-colors leading-tight">App Store</a>
-              </div>
-            </div>
-          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <a
+            href="privacy-policy.html"
+            target="_blank"
+            class="text-gray-400 hover:text-white text-xs transition-colors leading-tight inline-block mt-2"
+            style="margin-bottom: 0; display: inline-block"
+          >
+            Privacy Policy
+          </a>
+          <p class="mt-0 text-xs leading-tight mb-2">
+            &copy; 2025 Musilinda. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
-
-    <!-- Main application script removed: no waitlist, no modal, no custom JS needed for static SPA -->
   </body>
 </html>
