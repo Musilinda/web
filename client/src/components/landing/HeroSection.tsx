@@ -18,9 +18,7 @@ export default function HeroSection() {
           <span className="text-4xl mb-4 ml-2" aria-hidden="true">♫</span>
         </div>
         <p className="text-xl max-w-xl mb-6">A music theory app that teaches by doing — sing, see, feel, and truly understand harmony.</p>
-        <button className="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-indigo-100 transition join-waitlist">
-          Join the Early Access
-        </button>
+        {/* Removed waitlist button: Join the Early Access */}
       </div>
     </section>
   );
