@@ -19,12 +19,8 @@
 
     <title>Musilinda – Theory You Can Feel</title>
 
-    <!-- External scripts -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      type="text/javascript"
-      src="https://replit.com/public/js/replit-dev-banner.js"
-    ></script>
+    <!-- Tailwind, built at compile time (was the dev-only Play CDN) -->
+    <link rel="stylesheet" href="./style.css" />
 
     <!-- Application styles -->
     <style>
@@ -251,9 +247,10 @@
           understand harmony.
         </p>
 
-        <!-- CTA Button -->
+        <!-- CTA Button — %VITE_LEARN_URL% is injected at build time per environment
+             (local VM: https://learn.musilinda.test; prod: https://learn.musilinda.com) -->
         <a
-          href="https://learn.musilinda.com"
+          href="%VITE_LEARN_URL%"
           class="cta-button bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-indigo-100 transition"
         >
           Learn
