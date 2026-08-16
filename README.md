@@ -2,7 +2,7 @@
 
 This is the static landing page for Musilinda, a music theory app that teaches by doing. Learn to sing, see, and feel music harmony through interactive lessons.
 
-## Getting Started -
+## Getting Starteddd
 
 1. **Install dependencies:**
    ```bash
